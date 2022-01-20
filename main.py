@@ -1,15 +1,12 @@
 import numpy as np
 
-# "N"-Длина сообщения
-N=int(input())
-mat=np.eye(N)
-print(mat)
+code = '010100'
 
-#"P"-Количество проверочных бит
-P=int(input())
-chet_mat=np.zeros((P,1),dtype=np.int8 )
-chet_mat+=1
-print(chet_mat)
+def generative_mat(N, P):
+    mat=np.eye(N)#единичная матрица NxN
+    chet_mat=np.ones((P,1))#порверочная часть
+    generate_mat=np.concatenate((mat,chet_mat),axis=1)
+    return generate_mat
 
-generate_mat=np.concatenate((mat,chet_mat),axis=1)
-print(generate_mat)
+G = generative_mat(len(code), len(code))
+print(G)
