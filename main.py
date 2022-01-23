@@ -1,6 +1,4 @@
-from tkinter import N
 import numpy as np
-
 
 
 def generative_mat(N, P):
@@ -18,15 +16,10 @@ def convert_code(loc_code):
 massege = input("Введите сообщение ")
 for code in  massege:
     code=format(ord(code), 'b')
-    print(code)
     code=str(code)
 
-
     G = generative_mat(len(code), len(code))
-    print(G)
     code=convert_code(code)
-    print(code)
     code_mat=np.dot(code, G)
     code_mat%=2
     print(code_mat)
-    print()
