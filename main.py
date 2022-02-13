@@ -1,5 +1,5 @@
 import numpy as np
-from Hameng import hem
+from Hameng import hem, decod_hem
 from Check_mat import generative_mat, convert_code
 
 inp=int(input("Введите 1-алгорим для алгоритма чётных матриц или 2-для алгоритма Хеминга"))
@@ -18,6 +18,9 @@ if inp==1 :
 if inp==2:
     for code in  massege:
         code=hem(code)
+    print(code)
+if inp==3:
+    decod_hem()
         
 
         
