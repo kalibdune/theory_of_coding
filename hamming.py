@@ -4,6 +4,7 @@ import sys
 
 from Hameng import hamming
 from just_bin import binary_code
+from random_bit import random_error
 
 class Haming_method(QWidget):
     def __init__(self, *args, **kwargs):
@@ -12,6 +13,8 @@ class Haming_method(QWidget):
 
         self.coding.clicked.connect(self.coding_button_handler)
         self.no_coding.clicked.connect(self.no_coding_button_handler)
+        self.error_button.clicked.connect(self.error_button_handler)
+        self.clear_button.clicked.connect(self.clear)
 
     def coding_button_handler(self):
         text = self.user_text.toPlainText()
@@ -20,6 +23,16 @@ class Haming_method(QWidget):
     def no_coding_button_handler(self):
         text = self.user_text.toPlainText()
         self.binary_text.setPlainText(binary_code(text))
+    
+    def error_button_handler(self):
+        text = self.binary_text.toPlainText()
+        error_text = random_error(text)
+        self.error_text.setPlainText(error_text)
+    
+    def clear(self):
+        self.user_text.clear()
+        self.binary_text.clear()
+        self.error_text.clear()
 
 if __name__ == '__main__':
     app = QApplication([])
