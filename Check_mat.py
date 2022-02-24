@@ -1,6 +1,5 @@
 import numpy as np
 
-
 def generative_mat(N, P):
     mat=np.eye(N)#единичная матрица NxN
     chet_mat=np.ones((P,1))#порверочная часть
@@ -26,3 +25,35 @@ def chet_mat(text):
         result += str(code_mat) + '\n'
     result = result.replace('.', '').replace('[', '').replace(']', '').replace(' ', '')#to string
     return result
+
+def decode_mat(text):
+    #to array
+    array = text.split('<br>')
+    plain_text_array = []
+    for word in array:
+        if word.find("""<span style="color:red;">""" and """</span>"""):
+            plain_text_array.append(word.replace("""<span style="color:red;">""", '').replace("""</span>""", ''))
+        else:
+            plain_text_array.append(word)
+    del plain_text_array[-1]
+    
+    #decode
+    result = ''
+    pos_error = 0
+    for item in plain_text_array:
+        item_arr = list(item)
+        summ = 0
+        real_letter = ''
+        for i in range(-len(item_arr), -1):
+            real_letter+=item_arr[i]
+            summ+=int(item_arr[i])
+
+        
+        if summ % 2 == int(item_arr[len(item_arr)-1]):
+            result+=chr(int(real_letter, 2))
+        else:
+            result+="""<span style="color:red;">{0}</span>""".format(chr(int(real_letter, 2)))
+            pos_error = plain_text_array.index(item)
+    
+    result+='<br>Алгоритм:<br>обнаружена ошибка в {0} букве'.format(str(pos_error+1))
+    return result    

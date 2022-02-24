@@ -27,7 +27,7 @@ class Haming_method(QWidget):
     def error_button_handler(self):
         text = self.binary_text.toPlainText()
         error_text = random_error(text)
-        self.error_text.setPlainText(error_text)
+        self.error_text.setHtml(error_text)
     
     def clear(self):
         self.user_text.clear()
