@@ -31,5 +31,5 @@ def to_word_chet_mat(text, code):
             result+="""<span style="color:red;">{0}</span>""".format(chr(int(real_letter, 2)))
             pos_error = plain_text_array.index(item)
     
-    result+='<br>Алгоритм:<br>обнаружена ошибка в {0} букве'.format(str(pos_error+1))
+    result+='<br>Код пришёл с ошибкой, без алгоритма исправить невозможно'
     return result
