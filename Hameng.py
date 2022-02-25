@@ -68,9 +68,57 @@ def decod_hamming(code):
     if sum==-1:
         return code
     else:
-        
         return (code, sum)
 
-code=[1,0,0,0,0,0,0,0,0,0,0]
-print (decod_hamming(code))
-#print(code)
+def multi_decoding_hamming(text):
+    #to array
+    array = text.split('<br>')
+    plain_text_array = []
+    for word in array:
+        if word.find("""<span style="color:red;">""" and """</span>"""):
+            plain_text_array.append(word.replace("""<span style="color:red;">""", '').replace("""</span>""", ''))
+        else:
+            plain_text_array.append(word)
+    del plain_text_array[-1]
+    
+    done_arr = []
+    
+    for item in plain_text_array:
+        code = list(item)
+        tmp_arr = []
+        for num in code:
+            tmp_arr.append(int(num))
+        done_arr.append(tmp_arr)
+    #decoding
+    
+    ready_arr = []
+    for code in done_arr:
+        ready_arr.append(decod_hamming(code))
+    
+    error_word = 0
+    pos_error = 0
+    result = ''
+    for i in range(len(ready_arr)):
+        if len(ready_arr[i]) == 2:
+            message = ready_arr[i]
+            pos_err = message[1]
+            code = ''.join(map(str, message[0]))
+            print(code)
+            result += chr(int(code, 2))
+        else:
+            code = ready_arr[i]
+            code = ''.join(map(str, code))
+            print(code)
+            result += chr(int(code, 2))
+    
+    return result
+
+#text = """<span style="color:red;">1</span>0101011100<br>10101011111<br>00101011100<br>"""
+#code=[1,1,1,1,1,0,1,1,0,1,0]
+#print(multi_decoding_hamming(text))
+"""
+w = hamming('w')
+w = [0,1,1,0,1,1,0,1,1,1,1]
+res = decod_hamming(w)
+print(res)
+"""
