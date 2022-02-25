@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Parity method</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>brick.png</normaloff>brick.png</iconset>
+  </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -118,13 +122,6 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="4">
-     <widget class="QTextEdit" name="decoded_text">
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
     <item row="3" column="0">
      <widget class="QPushButton" name="no_coding">
       <property name="text">
@@ -186,6 +183,13 @@
      <widget class="QPushButton" name="clear_button">
       <property name="text">
        <string>очистить</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="4">
+     <widget class="QTextEdit" name="decoded_text">
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
     </item>
