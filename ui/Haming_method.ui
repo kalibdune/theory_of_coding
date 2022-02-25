@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Haming method</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>brick.png</normaloff>brick.png</iconset>
+  </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
