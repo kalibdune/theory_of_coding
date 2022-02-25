@@ -57,4 +57,20 @@ def decod_hamming(code):
                     arrk[n]=0
                 else:
                     arrk[n]=1
-    return arrk
+    sum=0
+    for i  in range(0,8):
+        sum+=arrk[i]*2**i
+    sum-=1
+    if code[sum]==1:
+        code[sum]=0
+    else:
+        code[sum]=1
+    if sum==-1:
+        return code
+    else:
+        
+        return (code, sum)
+
+code=[1,0,0,0,0,0,0,0,0,0,0]
+print (decod_hamming(code))
+#print(code)
