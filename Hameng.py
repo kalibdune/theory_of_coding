@@ -61,10 +61,11 @@ def decod_hamming(code):
     for i  in range(0,8):
         sum+=arrk[i]*2**i
     sum-=1
-    if code[sum]==1:
-        code[sum]=0
-    else:
-        code[sum]=1
+    if sum!=-1:
+        if code[sum]==1:
+            code[sum]=0
+        if code[sum]==0:
+            code[sum]=1
 
 
     k=0
@@ -132,13 +133,14 @@ def multi_decoding_hamming(text):
 #code=[1,1,1,1,1,0,1,1,0,1,0]
 #print(multi_decoding_hamming(text))
 
-w = hamming('w')
+w = hamming('l')
 print(w)
-w = [0,1,1,0,1,1,0,1,1,1,1]    
+w = [0,1,1,0,1,1,0,1,1,1,1]
+w= [0, 0, 1, 0, 1, 0, 1,1, 1, 0, 0]  
 res = decod_hamming(w)
 print(res)
 print(chr(int('1110111', 2)))
 print(ord("w"))
 
 #[0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1        1110111
-#[0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1        1110111
+#[0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1        1110111 
