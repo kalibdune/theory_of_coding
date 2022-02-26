@@ -6,7 +6,7 @@ def binary_code(text):
         result += code + '\n'
     return result
 
-def to_word_chet_mat(text, code):
+def to_word(text, code):
     code = code.split()
     array = text.split('<br>')
 
