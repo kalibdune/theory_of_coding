@@ -2,7 +2,7 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton, QWidget
 import sys
 
-from Hameng import hamming
+from Hameng import hamming, multi_decoding_hamming
 from just_bin import binary_code
 from random_bit import random_error
 
@@ -33,7 +33,7 @@ class Haming_method(QWidget):
         error_text = random_error(text)
         self.error_text.setHtml(error_text)
         if self.coding_button_pressed == True:
-            self.decoded_text.setHtml('')
+            self.decoded_text.setHtml(multi_decoding_hamming(error_text))
         else:
             self.decoded_text.setHtml('')
 

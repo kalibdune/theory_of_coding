@@ -119,28 +119,14 @@ def multi_decoding_hamming(text):
             message = ready_arr[i]
             pos_err = message[1]
             code = ''.join(map(str, message[0]))
-            print(code)
             result += chr(int(code, 2))
         else:
             code = ready_arr[i]
             code = ''.join(map(str, code))
-            print(code)
             result += chr(int(code, 2))
     
     return result
 
-#text = """<span style="color:red;">1</span>0101011100<br>10101011111<br>00101011100<br>"""
-#code=[1,1,1,1,1,0,1,1,0,1,0]
-#print(multi_decoding_hamming(text))
-
-w = hamming('l')
-print(w)
-w = [0,1,1,0,1,1,0,1,1,1,1]
-w= [0, 0, 1, 0, 1, 0, 1,1, 1, 0, 0]  
-res = decod_hamming(w)
-print(res)
-print(chr(int('1110111', 2)))
-print(ord("w"))
-
-#[0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1        1110111
-#[0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1        1110111 
+text = """<span style="color:red;">1</span>0101011100<br>10101011111<br>00101011100<br>"""
+code=[1,1,1,1,1,0,1,1,0,1,0]
+print(multi_decoding_hamming(text))
