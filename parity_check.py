@@ -2,7 +2,7 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton, QWidget
 
 from Check_mat import chet_mat, decode_mat
-from just_bin import binary_code, to_word_chet_mat
+from just_bin import binary_code, to_word
 from random_bit import random_error
 
 class Parity_check(QWidget):
@@ -35,7 +35,7 @@ class Parity_check(QWidget):
             self.decoded_text.setHtml(decode_mat(error_text))
         else:
             code = self.binary_text.toPlainText()
-            self.decoded_text.setHtml(to_word_chet_mat(error_text, code))
+            self.decoded_text.setHtml(to_word(error_text, code))
     
     def clear(self):
         self.user_text.clear()

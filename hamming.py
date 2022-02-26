@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton, QWid
 import sys
 
 from Hameng import hamming, multi_decoding_hamming
-from just_bin import binary_code
+from just_bin import binary_code, to_word
 from random_bit import random_error
 
 class Haming_method(QWidget):
@@ -35,7 +35,8 @@ class Haming_method(QWidget):
         if self.coding_button_pressed == True:
             self.decoded_text.setHtml(multi_decoding_hamming(error_text))
         else:
-            self.decoded_text.setHtml('')
+            code = self.binary_text.toPlainText()
+            self.decoded_text.setHtml(to_word(error_text, code))
 
     def clear(self):
         self.user_text.clear()
