@@ -65,10 +65,25 @@ def decod_hamming(code):
         code[sum]=0
     else:
         code[sum]=1
+
+
+    k=0
+    for n in range(1,10):
+        if 2**n>=len(code)+n+1:
+            k=n
+            break
+    k-=1
+    for i in range(k,-1,-1):
+        code.pop((2**i)-1)
+
+
+
     if sum==-1:
         return code
     else:
         return (code, sum)
+
+
 
 def multi_decoding_hamming(text):
     #to array
@@ -116,9 +131,14 @@ def multi_decoding_hamming(text):
 #text = """<span style="color:red;">1</span>0101011100<br>10101011111<br>00101011100<br>"""
 #code=[1,1,1,1,1,0,1,1,0,1,0]
 #print(multi_decoding_hamming(text))
-"""
+
 w = hamming('w')
-w = [0,1,1,0,1,1,0,1,1,1,1]
+print(w)
+w = [0,1,1,0,1,1,0,1,1,1,1]    
 res = decod_hamming(w)
 print(res)
-"""
+print(chr(int('1110111', 2)))
+print(ord("w"))
+
+#[0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1        1110111
+#[0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1        1110111
