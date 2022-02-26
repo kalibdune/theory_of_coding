@@ -117,19 +117,13 @@ def multi_decoding_hamming(text):
     for i in range(len(ready_arr)):
         if len(ready_arr[i]) == 2:
             message = ready_arr[i]
-            pos_err = message[1]
+            error_word = i + 1
+            pos_error = message[1]
             code = ''.join(map(str, message[0]))
             result += chr(int(code, 2))
         else:
             code = ready_arr[i]
             code = ''.join(map(str, code))
             result += chr(int(code, 2))
-    
+    result += '<br>Алгоритм исправил ошибку в {0} букве, в {1} бите'.format(error_word, pos_error)
     return result
-
-text = """<span style="color:red;">1</span>0101011100<br>10101011111<br>00101011100<br>"""
-code=[1,1,1,1,1,0,1,1,0,1,0]
-w=[0,0,1,0,1,0,1,1,1,0,1]
-print(len(w))
-print(decod_hamming(w))
-print(multi_decoding_hamming(text))
