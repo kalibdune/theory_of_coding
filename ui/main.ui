@@ -98,7 +98,7 @@
      <item>
       <widget class="QPushButton" name="Button_haming">
        <property name="text">
-        <string>Коды Хейминга</string>
+        <string>Коды Хэмминга</string>
        </property>
       </widget>
      </item>
